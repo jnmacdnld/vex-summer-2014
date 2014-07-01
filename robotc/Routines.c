@@ -1,0 +1,12 @@
+#include "Drive.c"
+#include "AutonTurn.h"
+#include "Intake.c"
+#include "LiftControl.c"
+
+#include "RoutinesHangingBlockPush.c"
+#include "RoutinesHangingPush.c"
+#include "RoutinesHangingPushMove.c"
+#include "RoutinesMiddleBlock.c"
+#include "RoutinesMiddleStash.c"
+#include "RoutinesMiddleStashBlock.c"
+#include "RoutinesMiddleStashThree.c"
