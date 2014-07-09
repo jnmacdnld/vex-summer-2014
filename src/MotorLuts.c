@@ -75,8 +75,8 @@ short rightDriveBackwardSettingLut[128] =
 };
 
 void MotorLutsInit() {
-  // Motor channels range from 1-10 and the indexes of the motors array range
-  // from 0-9, so place the LUT for channel n at index n - 1
+  // Motor ports range from 1-10 and the indexes of the motors array range
+  // from 0-9, so place the LUT for port n at index n - 1
   motorLutsForward[FRONT_LEFT_DRIVE - 1] = leftDriveForwardSettingLut;
   motorLutsForward[MIDDLE_LEFT_DRIVE - 1] = leftDriveForwardSettingLut;
   motorLutsForward[BACK_LEFT_DRIVE - 1] = leftDriveForwardSettingLut;
@@ -94,7 +94,7 @@ void MotorLutsInit() {
   motorLutsBackward[BACK_RIGHT_DRIVE - 1] = rightDriveBackwardSettingLut;
 }
 
-short MotorLutsGetAdjustedSetting(short channel, short setting) {
+short MotorLutsGetAdjustedSetting(short port, short setting) {
   // Bound the requested motor power setting inside kFullPower and -kFullPower
   // to prevent errors
   if (setting > kFullPower)
@@ -104,10 +104,10 @@ short MotorLutsGetAdjustedSetting(short channel, short setting) {
 
   // Get the motor power setting from the LUT that makes the relationship
   // between motor setting and actual motor speed linear. The LUT for a motor
-  // on channel n is located at index n - 1, since motor channels range from
+  // on port n is located at index n - 1, since motor ports range from
   // 1-10 and motors array indexes range from 0-9
   if (setting > 0)
-    return motorLutsForward[channel - 1][setting];
+    return motorLutsForward[port - 1][setting];
   else
-    return -motorLutsBackward[channel - 1][abs(setting)];
+    return -motorLutsBackward[port - 1][abs(setting)];
 }

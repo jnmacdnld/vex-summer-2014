@@ -75,9 +75,25 @@ extern "C" {
 #define BACK_RIGHT_DRIVE_IME 0
 #define BACK_LEFT_DRIVE_IME 1
 
-// Declare variables for sensors to be initialized in init.c made avaliable globally
+/**
+ * For a robot with 4" wheels, driven directly by 393 motors using internal
+ * high-speed gears, 31.19 ticks of an Integrated Motor Encoder (IME) will move
+ * the robot one inch
+ */
+#define kHighSpeedImeTicksPerInch 31.19
+
+/**
+ * 392 ticks of a Integrated Motor Encoder (IME) connected to a 393 motor
+ * using a set of high-speed internal gears equals one revolution of the motor's
+ * output shaft
+ */
+#define kHighSpeedImeTicksPerRev 392.0
+
+// Declare variables for sensors to be initialized in init.c and made avaliable
+// globally
 extern Gyro gyro;
 extern Ultrasonic stashSonar;
+
 
 // A function prototype looks exactly like its declaration, but with a semicolon instead of
 // actual code. If a function does not match a prototype, compile errors will occur.

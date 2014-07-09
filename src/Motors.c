@@ -18,20 +18,20 @@ void MotorsInit() {
   }
 }
 
-void MotorsSet(short channel, short setting) {
+void MotorsSet(short port, short setting) {
   // Instead of setting the motor power setting directly, set the request and
   // let MotorsUpdateTask decide if that setting is apporiate. This also
   // prevents multiple tasks from calling motorSet, since all calls to
   // motorSet are handled by MotorsUpdateTask
-  motors[channel].request = setting;
+  motors[port].request = setting;
 }
 
-void MotorsSetAdjusted(short channel, short setting) {
+void MotorsSetAdjusted(short port, short setting) {
   // Get the motor power setting from the LUT that makes the relationship
   // between motor setting and actual motor speed linear
-  short adjusted_setting = MotorLutsGetAdjustedSetting(channel, setting);
+  short adjusted_setting = MotorLutsGetAdjustedSetting(port, setting);
 
-  MotorsSet(channel, adjusted_setting);
+  MotorsSet(port, adjusted_setting);
 }
 
 void MotorsUpdateTask() {
