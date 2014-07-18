@@ -30,10 +30,8 @@ void DriveSetPower(short setting);
 /**
  * Moves the drive straight, and moves the distance specified in encoder ticks
  * @param ticks         the distance, in ticks, that the drive should move
- * @param power_percent the percent, 0.0 to 1.0, of the maximum possible motor
- *                      power to use while moving
  */
-void DriveMoveStraightTicks(int ticks, float power_percent = 0.7);
+void DriveMoveStraightTicks(short ticks);
 
 /**
  * Pivots the drive by moving the left side of the drive by the specified amount
@@ -41,9 +39,7 @@ void DriveMoveStraightTicks(int ticks, float power_percent = 0.7);
  * but in the opposite direction
  * @param ticks         the distance, in ticks, that the left side of the drive
  *                      should move while pivoting
- * @param power_percent the percent, 0.0 to 1.0, of the maximum possible motor
- *                      power to use while pivoting
  */
-void DrivePivotTicks(int ticks, float power_percent = 0.7);
+void DrivePivotTicks(short ticks);
 
 #endif
