@@ -23,6 +23,8 @@ void DriveSetLeftPower(short setting) {
 }
 
 void DriveSetRightPower(short setting) {
+  // In order for positive values of setting to move the drive forwards, 
+  // the motors must be set to -setting
   MotorsSetAdjusted(FRONT_RIGHT_DRIVE, -setting);
   MotorsSetAdjusted(MIDDLE_RIGHT_DRIVE, -setting);
   MotorsSetAdjusted(BACK_RIGHT_DRIVE, -setting);
