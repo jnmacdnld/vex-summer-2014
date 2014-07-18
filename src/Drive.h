@@ -2,6 +2,12 @@
 #define DRIVE_H
 
 /**
+ * Drive initialization function; must be called before using the following
+ * functions in order for them to work properly
+ */
+void DriveInit();
+
+/**
  * Sets all of the motors on the left side of the drive to the specified power
  * setting
  * @param setting the power setting, -127 to 127, that the motors should be set
