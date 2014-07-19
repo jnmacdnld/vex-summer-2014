@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "Motors.h"
 
-short PidUpdateController(PidController* p, short sensor_value) {
+short PidGetPower(PidController* p, short sensor_value) {
   double output, integral_term;
   short error, error_derivative;
 

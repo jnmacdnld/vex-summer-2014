@@ -33,7 +33,7 @@ typedef struct {
  *                      connected to a drive shaft)
  * @return              the motor power setting outputted by the PID controller
  */
-short PidUpdateController(PidController* p, short sensor_value);
+short PidGetPower(PidController* p, short sensor_value);
 
 /**
  * Initializes a PID controller struct with the given parameters and returns a
