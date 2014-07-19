@@ -36,9 +36,40 @@ void DriveSetPower(short setting) {
 }
 
 void DriveMoveStraightTicks(short ticks) {
+  long current_ime_ticks;
+  short pid_calculated_power;
 
+  // Store the value of the back left IME in current_ime_ticks
+  imeGet(BACK_LEFT_DRIVE_IME, &current_ime_ticks);
+
+  move_straight_ticks_pid->target = current_ime_ticks + ticks;
+
+  while (move_straight_ticks_pid->error != 0) {
+    // Store the value of the back left IME in current_ime_ticks
+    imeGet(BACK_LEFT_DRIVE_IME, &current_ime_ticks);
+    
+    pid_calculated_power = PidGetPower(move_straight_ticks_pid,
+      current_ime_ticks);
+    DriveSetPower(pid_calculated_power);
+  }
 }
 
 void DrivePivotTicks(short ticks) {
+  long current_ime_ticks;
+  short pid_calculated_power;
 
+  // Store the value of the back left IME in current_ime_ticks
+  imeGet(BACK_LEFT_DRIVE_IME, &current_ime_ticks);
+
+  pivot_ticks_pid->target = current_ime_ticks + ticks;
+
+  while (pivot_ticks_pid->error != 0) {
+    // Store the value of the back left IME in current_ime_ticks
+    imeGet(BACK_LEFT_DRIVE_IME, &current_ime_ticks);
+    
+    pid_calculated_power = PidGetPower(pivot_ticks_pid,
+      current_ime_ticks);
+    DriveSetLeftPower(pid_calculated_power);
+    DriveSetRightPower(-pid_calculated_power);
+  }
 }
